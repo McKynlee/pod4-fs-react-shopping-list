@@ -39,6 +39,22 @@ router.get('/', (req, res) => {
     });
 }); // end GET
 
+// Delete Route
+router.delete('/reset', function (req, res) {
+  let sqlText = `DELETE FROM "shopping_list" WHERE "isPurchased" = 'TRUE'`;
+
+  pool
+    .query(sqlText)
+    .then((dbRes) => {
+      console.log('reset worked');
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('error on reset', error);
+      res.sendStatus(500);
+    });
+});
+
 // PUT route for /list/:id
 /* 
     Request body looks like:
@@ -81,7 +97,7 @@ router.put('/buy/:id', (req, res) => {
       );
       res.sendStatus(500);
     });
-  });
+});
 
 //Delete Route
 router.delete('/clear', function (req, res) {
