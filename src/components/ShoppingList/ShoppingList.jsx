@@ -1,4 +1,5 @@
 import './ShoppingList.css';
+import ItemComponent from '../ItemComponent/ItemComponent';
 
 function ShoppingList({ shoppingList, purchasedItem }) {
   console.log('shoppingList prop:', shoppingList);
@@ -34,31 +35,11 @@ function ShoppingList({ shoppingList, purchasedItem }) {
             /* Pull this out if Item */
           }
           return (
-            <div key={shoppingItem.id} className="list-item">
-              <p>{shoppingItem.name}</p>
-              <p>
-                {shoppingItem.quantity} {shoppingItem.unit}
-              </p>
-              {/* {hideButtons(shoppingItem.isPurchased)} */}
-
-              {shoppingItem.isPurchased ? (
-                <div>
-                  <p>
-                    <strong>Purchased</strong>
-                  </p>
-                </div>
-              ) : (
-                <div className="item-buttons">
-                  <button
-                    className="item-button"
-                    onClick={() => purchasedItem(shoppingItem.id)}
-                  >
-                    Buy
-                  </button>
-                  <button className="item-button">Remove</button>
-                </div>
-              )}
-            </div>
+            <ItemComponent
+              key={shoppingItem.id}
+              shoppingItem={shoppingItem}
+              purchasedItem={purchasedItem}
+            />
           );
         })}
       </div>
