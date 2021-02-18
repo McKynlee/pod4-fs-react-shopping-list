@@ -1,10 +1,36 @@
 import React from 'react';
 
-import Header from '../Header/Header.jsx';
+// Import useEffect to auto-render GET on DOM on page load:
+import { useEffect, useState } from 'react';
+
+// import axios:
+import axios from 'axios';
+
+// import components:
+import Header from '../Header/Header.jsx'
+  import ShoppingList from '../ShoppingList/ShoppingList';
 import './App.css';
-import ShoppingList from '../ShoppingList/ShoppingList';
 
 function App() {
+
+  const [shoppingList, setShoppingList] = useState([]);
+
+  // auto-render db table info on DOM:
+  useEffect(() => {
+    fetchList();
+  }, []); //end useEffect
+
+  const fetchList = () => {
+    axios.get('/list')
+      .then(response => {
+        console.log('get response:', response.data);
+        setShoppingList(response.data);
+      })
+      .catch(error => {
+        console.log('GET error:', error);
+      })
+  }// end fetchList
+
   return (
     <div className="App">
       <Header />
