@@ -39,7 +39,7 @@ function App() {
 
     axios({
       method: 'PUT',
-      url: `/list/${isPurchasedID}`,
+      url: `/list/buy/${isPurchasedID}`,
       data: {
         isPurchased: 'TRUE',
       },

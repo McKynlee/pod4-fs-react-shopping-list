@@ -27,14 +27,9 @@ router.get('/', (req, res) => {
       isPurchased: TRUE
     }
 */
-router.put('/:id', (req, res) => {
-  console.log('*** in PUT /list/:id ***');
-
+router.put('/buy/:id', (req, res) => {
   const isPurchasedID = req.params.id;
-  console.log('isPurchasedID:', isPurchasedID);
-
   const isPurchased = req.body.isPurchased;
-  console.log('isPurchased:', isPurchased);
 
   let sqlScript = '';
 
