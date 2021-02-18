@@ -6,8 +6,24 @@ function ShoppingList() {
       <h2>Shopping List</h2>
       {/* Button Controls */}
       <div className="button-controls">
-        <button className="item-button">Reset</button>
-        <button className="item-button">Clear</button>
+        <button
+          className="item-button"
+          value="resetButton"
+          onClick={() => {
+            console.log('Reset Button Clicked');
+          }}
+        >
+          Reset
+        </button>
+        <button
+          className="item-button"
+          value="clearButton"
+          onClick={() => {
+            console.log('Clear Button Clicked');
+          }}
+        >
+          Clear
+        </button>
       </div>
       {/* List Items */}
       <div>
