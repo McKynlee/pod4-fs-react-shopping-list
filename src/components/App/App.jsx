@@ -101,6 +101,19 @@ function App() {
         console.log('error deleting item');
       })
   }
+  const resetList = () => {
+    console.log('in reset');
+
+    axios
+      .delete('/list/reset')
+      .then((response) => {
+        console.log('reset success!');
+        fetchList();
+      })
+      .catch((error) => {
+        console.log('error on reset');
+      });
+  }; // end resetList
 
   return (
     <div className="App">
@@ -121,6 +134,7 @@ function App() {
           purchasedItem={purchasedItem}
           clearList={clearList}
           deleteItem={deleteItem}
+          resetList={resetList}
         />
       </main>
     </div>
