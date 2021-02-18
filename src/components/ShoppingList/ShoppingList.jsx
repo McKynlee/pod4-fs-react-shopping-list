@@ -19,6 +19,24 @@ function ShoppingList() {
             <button>Remove</button>
           </div>
         </div>
+
+        <div className="list-item">
+          <p>Chicken Breast</p>
+          <p>20 lbs</p>
+          <div className="item-buttons">
+            <button>Buy</button>
+            <button>Remove</button>
+          </div>
+        </div>
+
+        <div className="list-item">
+          <p>Orange Juice</p>
+          <p>1 gallon</p>
+          <div className="item-buttons">
+            <button>Buy</button>
+            <button>Remove</button>
+          </div>
+        </div>
       </div>
     </div>
   );

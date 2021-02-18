@@ -14,8 +14,10 @@
 }
 
 .list-item {
+  display: inline-block;
   border: 1px solid #000000;
   border-radius: 20px;
+  margin: 0.5rem;
   padding: 0.5rem 0;
   width: 150px;
   height: 150px;
