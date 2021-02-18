@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 // import axios:
 import axios from 'axios';
+import ItemForm from '../ItemForm/ItemForm';
 
 // import components:
 import Header from '../Header/Header.jsx';
@@ -14,6 +15,27 @@ import './App.css';
 function App() {
   const [shoppingList, setShoppingList] = useState([]);
 
+  let [newItemName, setNewItemName] = useState('');
+  let [newQuantity, setNewQuantity] = useState('');
+  let [newUnit, setNewUnit] = useState('');
+
+  //POST route
+  const addItem = (event) => {
+    event.preventDefault();
+    axios
+      .post('/list', {
+        name: newItemName,
+        quantity: newQuantity,
+        unit: newUnit,
+      })
+      .then((response) => {
+        fetchList();
+      })
+      .catch((err) => {
+        alert('Error Adding item');
+        console.log(err);
+      });
+  };
   // auto-render db table info on DOM:
   useEffect(() => {
     fetchList();
@@ -56,8 +78,18 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       <main>
-        <ShoppingList />
+        <ItemForm
+          newItemName={newItemName}
+          newQuantity={newQuantity}
+          newUnit={newUnit}
+          setNewItemName={setNewItemName}
+          setNewQuantity={setNewQuantity}
+          setNewUnit={setNewUnit}
+          handleSubmit={addItem}
+        />
+        <ShoppingList shoppingList={shoppingList} />
       </main>
     </div>
   );
