@@ -20,7 +20,7 @@ function App() {
   let [newUnit, setNewUnit] = useState('');
 
   //POST route
-  const addItem = () => {
+  const addItem = (event) => {
     event.preventDefault();
     axios
       .post('/list', {
