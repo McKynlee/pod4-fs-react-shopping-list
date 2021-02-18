@@ -16,7 +16,7 @@ function App() {
         name: newItemName,
         quantity: newQuantity,
         unit: newUnit,
-      
+      })
       .then((response) => {
         fetchList();
       })
