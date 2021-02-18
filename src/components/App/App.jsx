@@ -8,6 +8,7 @@ import axios from 'axios';
 
 // import components:
 import Header from '../Header/Header.jsx';
+import ShoppingList from '../ShoppingList/ShoppingList';
 import ItemForm from '../ItemForm/ItemForm';
 import './App.css';
 
@@ -55,7 +56,7 @@ function App() {
         handleSubmit={handleSubmit}
       />
       <main>
-        <p>Under Construction...</p>
+        <ShoppingList />
       </main>
     </div>
   );
