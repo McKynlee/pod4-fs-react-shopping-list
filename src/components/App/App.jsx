@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 // import axios:
 import axios from 'axios';
+import ItemForm from '../ItemForm/ItemForm';
 
 // import components:
 import Header from '../Header/Header.jsx'
@@ -57,6 +58,15 @@ function App() {
       <Header />
 
       <main>
+        <ItemForm
+          newItemName={newItemName}
+          newQuantity={newQuantity}
+          newUnit={newUnit}
+          setNewItemName={setNewItemName}
+          setNewQuantity={setNewQuantity}
+          setNewUnit={setNewUnit}
+          handleSubmit={addItem}
+        />
         <ShoppingList shoppingList={shoppingList} />
       </main>
     </div>
