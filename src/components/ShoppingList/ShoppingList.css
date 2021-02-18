@@ -1,3 +1,23 @@
-h2 {
-  color: #ed2929;
+.shopping-list {
+  margin: 2rem;
+  padding: 1rem;
+}
+
+.button-controls {
+  margin: 1rem 0 2rem 0;
+  padding: 0.5rem 0;
+}
+
+.item-button {
+  margin-right: 1rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.list-item {
+  border: 1px solid #000000;
+  border-radius: 20px;
+  padding: 0.5rem 0;
+  width: 150px;
+  height: 150px;
+  text-align: center;
 }
