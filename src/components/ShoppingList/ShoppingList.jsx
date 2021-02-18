@@ -1,7 +1,7 @@
 import './ShoppingList.css';
 import ItemComponent from '../ItemComponent/ItemComponent';
 
-function ShoppingList({ shoppingList, purchasedItem }) {
+function ShoppingList({ shoppingList, clearList, purchasedItem }) {
   console.log('shoppingList prop:', shoppingList);
 
   return (
@@ -18,13 +18,7 @@ function ShoppingList({ shoppingList, purchasedItem }) {
         >
           Reset
         </button>
-        <button
-          className="list-button"
-          value="clearButton"
-          onClick={() => {
-            console.log('Clear Button Clicked');
-          }}
-        >
+        <button className="list-button" value="clearButton" onClick={clearList}>
           Clear
         </button>
       </div>

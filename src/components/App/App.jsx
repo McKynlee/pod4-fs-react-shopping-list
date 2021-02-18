@@ -75,6 +75,20 @@ function App() {
       });
   }; // end purchasedItem
 
+  const clearList = () => {
+    console.log('inClear');
+
+    axios
+      .delete('/list/clear')
+      .then((response) => {
+        console.log('Clear successful');
+        fetchList();
+      })
+      .catch((error) => {
+        console.log('Error in clearList', error);
+      });
+  }; // end clearList
+
   return (
     <div className="App">
       <Header />
@@ -92,6 +106,7 @@ function App() {
         <ShoppingList
           shoppingList={shoppingList}
           purchasedItem={purchasedItem}
+          clearList={clearList}
         />
       </main>
     </div>
