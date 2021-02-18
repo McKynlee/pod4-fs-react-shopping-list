@@ -81,7 +81,7 @@ router.put('/buy/:id', (req, res) => {
       );
       res.sendStatus(500);
     });
-  });
+});
 
 //Delete Route
 router.delete('/clear', function (req, res) {
@@ -97,5 +97,21 @@ router.delete('/clear', function (req, res) {
       console.log('error on clear', error);
     });
 });
+
+// Delete Item route:
+router.delete('/delete/:id', function (req, res) {
+  let deleteItemId = req.params.id;
+  let sqlText = `DELETE FROM "shopping_list" WHERE "id"=$1;`;
+
+  pool.query(sqlText, [deleteItemId])
+    .then((dbRes) => {
+      console.log('deleted item', dbRes);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('error deleting item', error);
+      res.sendStatus(500);
+    })
+})
 
 module.exports = router;

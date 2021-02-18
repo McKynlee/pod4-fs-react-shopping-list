@@ -89,6 +89,19 @@ function App() {
       });
   }; // end clearList
 
+  const deleteItem = (deleteItemId) => {
+    console.log('deleteItem');
+
+    axios.delete(`/list/delete/${deleteItemId}`)
+      .then((response) => {
+        console.log('Delete successful');
+        fetchList();
+      })
+      .catch((error) => {
+        console.log('error deleting item');
+      })
+  }
+
   return (
     <div className="App">
       <Header />
@@ -107,6 +120,7 @@ function App() {
           shoppingList={shoppingList}
           purchasedItem={purchasedItem}
           clearList={clearList}
+          deleteItem={deleteItem}
         />
       </main>
     </div>

@@ -2,5 +2,7 @@
   background-color: #383e56;
   text-align: center;
   padding: 0.25em;
-  color: #c5d7bd;
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: #c5d7bd;
 }
