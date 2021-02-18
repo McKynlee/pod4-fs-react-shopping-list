@@ -8,7 +8,7 @@ import axios from 'axios';
 import ItemForm from '../ItemForm/ItemForm';
 
 // import components:
-import Header from '../Header/Header.jsx'
+import Header from '../Header/Header.jsx';
 import ShoppingList from '../ShoppingList/ShoppingList';
 import './App.css';
 
