@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
 // GET route:
 router.get('/', (req, res) => {
   const sqlText =
-    'SELECT * FROM "shopping_list" ORDER BY "isPurchased", "name" DESC;';
+    'SELECT * FROM "shopping_list" ORDER BY "isPurchased", "name" ASC;';
   pool
     .query(sqlText)
     .then((result) => {

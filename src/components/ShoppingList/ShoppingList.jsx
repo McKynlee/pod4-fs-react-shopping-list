@@ -1,6 +1,7 @@
 import './ShoppingList.css';
+import ItemComponent from '../ItemComponent/ItemComponent';
 
-function ShoppingList({ shoppingList, clearList }) {
+function ShoppingList({ shoppingList, clearList, purchasedItem }) {
   console.log('shoppingList prop:', shoppingList);
 
   return (
@@ -28,16 +29,11 @@ function ShoppingList({ shoppingList, clearList }) {
             /* Pull this out if Item */
           }
           return (
-            <div key={shoppingItem.id} className="list-item">
-              <p>{shoppingItem.name}</p>
-              <p>
-                {shoppingItem.quantity} {shoppingItem.unit}
-              </p>
-              <div className="item-buttons">
-                <button className="item-button">Buy</button>
-                <button className="item-button">Remove</button>
-              </div>
-            </div>
+            <ItemComponent
+              key={shoppingItem.id}
+              shoppingItem={shoppingItem}
+              purchasedItem={purchasedItem}
+            />
           );
         })}
       </div>
