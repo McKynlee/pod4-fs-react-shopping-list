@@ -36,4 +36,19 @@ router.get('/', (req, res) => {
     });
 }); // end GET
 
+//Delete Route
+router.delete('/clear', function (req, res) {
+  let sqlText = `DELETE FROM "shopping_list"`;
+
+  pool
+    .query(sqlText)
+    .then((dbRes) => {
+      console.log('in clear list');
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('error on clear', error);
+    });
+});
+
 module.exports = router;

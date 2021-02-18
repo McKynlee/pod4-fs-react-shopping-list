@@ -53,6 +53,20 @@ function App() {
       });
   }; // end fetchList
 
+  const clearList = () => {
+    console.log('inClear');
+
+    axios
+      .delete('/list/clear')
+      .then((response) => {
+        console.log('Clear successful');
+        fetchList();
+      })
+      .catch((error) => {
+        console.log('Error in clearList', error);
+      });
+  }; // end clearList
+
   return (
     <div className="App">
       <Header />
@@ -67,7 +81,7 @@ function App() {
           setNewUnit={setNewUnit}
           handleSubmit={addItem}
         />
-        <ShoppingList shoppingList={shoppingList} />
+        <ShoppingList shoppingList={shoppingList} clearList={clearList} />
       </main>
     </div>
   );
