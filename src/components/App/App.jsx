@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react';
 
 // import axios:
 import axios from 'axios';
-import ItemForm from '../ItemForm/ItemForm';
 
 // import components:
 import Header from '../Header/Header.jsx';
 import ShoppingList from '../ShoppingList/ShoppingList';
 import './App.css';
+import ItemForm from '../ItemForm/ItemForm';
 
 function App() {
   const [shoppingList, setShoppingList] = useState([]);
@@ -53,6 +53,42 @@ function App() {
       });
   }; // end fetchList
 
+  // handle "Buy" button click
+  // update db to show TRUE in the "isPurchased" column
+  const purchasedItem = (isPurchasedID) => {
+    console.log('*** in purchasedItem() ***');
+    console.log('isPurchasedID:', isPurchasedID);
+
+    axios({
+      method: 'PUT',
+      url: `/list/buy/${isPurchasedID}`,
+      data: {
+        isPurchased: 'TRUE',
+      },
+    })
+      .then((response) => {
+        console.log('PUT response:', response);
+        fetchList();
+      })
+      .catch((error) => {
+        console.log('PUT error:', error);
+      });
+  }; // end purchasedItem
+
+  const clearList = () => {
+    console.log('inClear');
+
+    axios
+      .delete('/list/clear')
+      .then((response) => {
+        console.log('Clear successful');
+        fetchList();
+      })
+      .catch((error) => {
+        console.log('Error in clearList', error);
+      });
+  }; // end clearList
+
   return (
     <div className="App">
       <Header />
@@ -67,7 +103,11 @@ function App() {
           setNewUnit={setNewUnit}
           handleSubmit={addItem}
         />
-        <ShoppingList shoppingList={shoppingList} />
+        <ShoppingList
+          shoppingList={shoppingList}
+          purchasedItem={purchasedItem}
+          clearList={clearList}
+        />
       </main>
     </div>
   );

@@ -1,7 +1,9 @@
 import './ShoppingList.css';
+import ItemComponent from '../ItemComponent/ItemComponent';
 
-function ShoppingList({ shoppingList }) {
+function ShoppingList({ shoppingList, clearList, purchasedItem }) {
   console.log('shoppingList prop:', shoppingList);
+
   return (
     <div className="shopping-list">
       <h2>Shopping List</h2>
@@ -16,30 +18,23 @@ function ShoppingList({ shoppingList }) {
         >
           Reset
         </button>
-        <button
-          className="list-button"
-          value="clearButton"
-          onClick={() => {
-            console.log('Clear Button Clicked');
-          }}
-        >
+        <button className="list-button" value="clearButton" onClick={clearList}>
           Clear
         </button>
       </div>
       {/* List Items */}
       <div>
-        {shoppingList.map(shoppingItem => {
-          {/* Pull this out if Item */ }
+        {shoppingList.map((shoppingItem) => {
+          {
+            /* Pull this out if Item */
+          }
           return (
-            <div key={shoppingItem.id} className="list-item">
-              <p>{shoppingItem.name}</p>
-              <p>{shoppingItem.quantity} {shoppingItem.unit}</p>
-              <div className="item-buttons">
-                <button className="item-button">Buy</button>
-                <button className="item-button">Remove</button>
-              </div>
-            </div>
-          )
+            <ItemComponent
+              key={shoppingItem.id}
+              shoppingItem={shoppingItem}
+              purchasedItem={purchasedItem}
+            />
+          );
         })}
       </div>
     </div>

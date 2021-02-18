@@ -7,8 +7,10 @@ const pool = require('../modules/pool.js');
 // POST Route
 router.post('/', (req, res) => {
   const item = req.body;
-  const sqlText = `INSERT INTO "shopping_list" ("name", "quantity", "unit" ) 
-                   VALUES ($1, $2, $3)`;
+  const sqlText = `
+    INSERT INTO "shopping_list"
+      ("name", "quantity", "unit" ) 
+    VALUES ($1, $2, $3)`;
   pool
     .query(sqlText, [item.name, item.quantity, item.unit])
     .then((result) => {
@@ -20,10 +22,11 @@ router.post('/', (req, res) => {
       res.sendStatus(500);
     });
 });
+
 // GET route:
 router.get('/', (req, res) => {
   const sqlText =
-    'SELECT * FROM "shopping_list" ORDER BY "isPurchased", "name" DESC;';
+    'SELECT * FROM "shopping_list" ORDER BY "isPurchased", "name" ASC;';
   pool
     .query(sqlText)
     .then((result) => {
@@ -48,6 +51,65 @@ route.delete('/reset', function (req, res) {
     .catch((error) => {
       console.log('error on reset', error);
       res.sendStatus(500);
+    });
+});
+
+// PUT route for /list/:id
+/* 
+    Request body looks like:
+    {
+      isPurchased: TRUE
+    }
+*/
+router.put('/buy/:id', (req, res) => {
+  console.log('*** in PUT /list/buy/:id ***');
+
+  const isPurchasedID = req.params.id;
+  console.log('isPurchasedID:', isPurchasedID);
+
+  const isPurchased = req.body.isPurchased;
+  console.log('isPurchased:', isPurchased);
+
+  let sqlScript = '';
+
+  if (isPurchased === 'TRUE') {
+    sqlScript = `
+      UPDATE "shopping_list"
+      SET "isPurchased" = TRUE
+      WHERE "id" = $1;
+    `;
+  } else {
+    res.sendStatus(400);
+    return;
+  }
+
+  pool
+    .query(sqlScript, [isPurchasedID])
+    .then((dbResponse) => {
+      console.log('dbResponse:', dbResponse);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(
+        `*** ERROR making database PUT query ${sqlScript} ***`,
+        error
+      );
+      res.sendStatus(500);
+    });
+  });
+
+//Delete Route
+router.delete('/clear', function (req, res) {
+  let sqlText = `DELETE FROM "shopping_list"`;
+
+  pool
+    .query(sqlText)
+    .then((dbRes) => {
+      console.log('in clear list');
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('error on clear', error);
     });
 });
 
