@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react';
 
 // import axios:
 import axios from 'axios';
+import ItemForm from '../ItemForm/ItemForm';
 
 // import components:
 import Header from '../Header/Header.jsx';
 import ShoppingList from '../ShoppingList/ShoppingList';
-import ItemForm from '../ItemForm/ItemForm';
 import './App.css';
 
 function App() {
@@ -58,7 +58,6 @@ function App() {
       <Header />
 
       <main>
-        <p>Under Construction...</p>
         <ItemForm
           newItemName={newItemName}
           newQuantity={newQuantity}
@@ -68,8 +67,7 @@ function App() {
           setNewUnit={setNewUnit}
           handleSubmit={addItem}
         />
-
-        <ShoppingList />
+        <ShoppingList shoppingList={shoppingList} />
       </main>
     </div>
   );

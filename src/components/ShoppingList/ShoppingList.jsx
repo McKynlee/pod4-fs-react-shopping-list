@@ -1,6 +1,7 @@
 import './ShoppingList.css';
 
-function ShoppingList() {
+function ShoppingList({ shoppingList }) {
+  console.log('shoppingList prop:', shoppingList);
   return (
     <div className="shopping-list">
       <h2>Shopping List</h2>
@@ -27,32 +28,19 @@ function ShoppingList() {
       </div>
       {/* List Items */}
       <div>
-        <div className="list-item">
-          <p>Apples</p>
-          <p>5 lbs</p>
-          <div className="item-buttons">
-            <button className="item-button">Buy</button>
-            <button className="item-button">Remove</button>
-          </div>
-        </div>
-
-        <div className="list-item">
-          <p>Chicken Breast</p>
-          <p>20 lbs</p>
-          <div className="item-buttons">
-            <button className="item-button">Buy</button>
-            <button className="item-button">Remove</button>
-          </div>
-        </div>
-
-        <div className="list-item">
-          <p>Orange Juice</p>
-          <p>1 gallon</p>
-          <div className="item-buttons">
-            <button className="item-button">Buy</button>
-            <button className="item-button">Remove</button>
-          </div>
-        </div>
+        {shoppingList.map(shoppingItem => {
+          {/* Pull this out if Item */ }
+          return (
+            <div key={shoppingItem.id} className="list-item">
+              <p>{shoppingItem.name}</p>
+              <p>{shoppingItem.quantity} {shoppingItem.unit}</p>
+              <div className="item-buttons">
+                <button className="item-button">Buy</button>
+                <button className="item-button">Remove</button>
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   );
