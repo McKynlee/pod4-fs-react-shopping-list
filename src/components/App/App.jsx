@@ -19,6 +19,23 @@ function App() {
   let [newQuantity, setNewQuantity] = useState('');
   let [newUnit, setNewUnit] = useState('');
 
+  //POST route
+  const addItem = (event) => {
+    event.preventDefault();
+    axios
+      .post('/list', {
+        name: newItemName,
+        quantity: newQuantity,
+        unit: newUnit,
+      })
+      .then((response) => {
+        fetchList();
+      })
+      .catch((err) => {
+        alert('Error Adding item');
+        console.log(err);
+      });
+  };
   // auto-render db table info on DOM:
   useEffect(() => {
     fetchList();
@@ -36,26 +53,22 @@ function App() {
       });
   }; // end fetchList
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log('in submit');
-    console.log('name', newItemName);
-    console.log('qty', newQuantity);
-  }
-
   return (
     <div className="App">
       <Header />
-      <ItemForm
-        newItemName={newItemName}
-        newQuantity={newQuantity}
-        newUnit={newUnit}
-        setNewItemName={setNewItemName}
-        setNewQuantity={setNewQuantity}
-        setNewUnit={setNewUnit}
-        handleSubmit={handleSubmit}
-      />
+
       <main>
+        <p>Under Construction...</p>
+        <ItemForm
+          newItemName={newItemName}
+          newQuantity={newQuantity}
+          newUnit={newUnit}
+          setNewItemName={setNewItemName}
+          setNewQuantity={setNewQuantity}
+          setNewUnit={setNewUnit}
+          handleSubmit={addItem}
+        />
+
         <ShoppingList />
       </main>
     </div>
