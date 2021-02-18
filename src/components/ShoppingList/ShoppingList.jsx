@@ -3,30 +3,6 @@ import './ShoppingList.css';
 function ShoppingList({ shoppingList, purchasedItem }) {
   console.log('shoppingList prop:', shoppingList);
 
-  const hideButtons = (isPurchased) => {
-    if (isPurchased) {
-      return (
-        <div>
-          <p>
-            <strong>Purchased</strong>
-          </p>
-        </div>
-      );
-    } else {
-      return (
-        <div className="item-buttons">
-          <button
-            className="item-button"
-            onClick={() => purchasedItem(shoppingItem.id)}
-          >
-            Buy
-          </button>
-          <button className="item-button">Remove</button>
-        </div>
-      );
-    }
-  };
-
   return (
     <div className="shopping-list">
       <h2>Shopping List</h2>
