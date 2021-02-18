@@ -8,7 +8,7 @@ import axios from 'axios';
 
 // import components:
 import Header from '../Header/Header.jsx'
-  import ShoppingList from '../ShoppingList/ShoppingList';
+import ShoppingList from '../ShoppingList/ShoppingList';
 import './App.css';
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        <ShoppingList />
+        <ShoppingList shoppingList={shoppingList} />
       </main>
     </div>
   );
