@@ -46,13 +46,13 @@ router.get('/', (req, res) => {
       isPurchased: TRUE
     }
 */
-router.put('/:id', (req, res) => {
-  console.log('*** in PUT /list/:id ***');
+router.put('/buy/:id', (req, res) => {
+  console.log('*** in PUT /list/buy/:id ***');
 
   const isPurchasedID = req.params.id;
   console.log('isPurchasedID:', isPurchasedID);
 
-  const isPurchased = req.body.inProgress;
+  const isPurchased = req.body.isPurchased;
   console.log('isPurchased:', isPurchased);
 
   let sqlScript = '';
@@ -64,7 +64,7 @@ router.put('/:id', (req, res) => {
       WHERE "id" = $1;
     `;
   } else {
-    res.sendStatus(500);
+    res.sendStatus(400);
     return;
   }
 

@@ -1,6 +1,6 @@
 import './ShoppingList.css';
 
-function ShoppingList({ shoppingList }) {
+function ShoppingList({ shoppingList, purchasedItem }) {
   console.log('shoppingList prop:', shoppingList);
   return (
     <div className="shopping-list">
@@ -42,8 +42,8 @@ function ShoppingList({ shoppingList }) {
                 <button
                   className="item-button"
                   onClick={() => {
-                    console.log('Buy Button Clicked');
-                    // console.log()
+                    const isPurchasedID = shoppingItem.id;
+                    purchasedItem(isPurchasedID);
                   }}
                 >
                   Buy

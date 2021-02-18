@@ -89,7 +89,10 @@ function App() {
           setNewUnit={setNewUnit}
           handleSubmit={addItem}
         />
-        <ShoppingList shoppingList={shoppingList} />
+        <ShoppingList
+          shoppingList={shoppingList}
+          purchasedItem={purchasedItem}
+        />
       </main>
     </div>
   );
