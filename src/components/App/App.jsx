@@ -19,6 +19,11 @@ function App() {
   let [newQuantity, setNewQuantity] = useState('');
   let [newUnit, setNewUnit] = useState('');
 
+  // auto-render db table info on DOM:
+  useEffect(() => {
+    fetchList();
+  }, []); //end useEffect
+
   //POST route
   const addItem = (event) => {
     event.preventDefault();
@@ -30,16 +35,15 @@ function App() {
       })
       .then((response) => {
         fetchList();
+        setNewItemName('');
+        setNewQuantity('');
+        setNewUnit('');
       })
       .catch((err) => {
         alert('Error Adding item');
         console.log(err);
       });
   };
-  // auto-render db table info on DOM:
-  useEffect(() => {
-    fetchList();
-  }, []); //end useEffect
 
   const fetchList = () => {
     axios
