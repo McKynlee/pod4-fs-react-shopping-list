@@ -38,9 +38,10 @@ router.get('/', (req, res) => {
       res.sendStatus(500);
     });
 }); // end GET
+
 // Delete Route
-route.delete('/reset', function (req, res) {
-  let sqlText = `DELETE FROM "shopping_list" WHERE "isPurchased" = "TRUE"`;
+router.delete('/reset', function (req, res) {
+  let sqlText = `DELETE FROM "shopping_list" WHERE "isPurchased" = 'TRUE'`;
 
   pool
     .query(sqlText)
@@ -96,7 +97,7 @@ router.put('/buy/:id', (req, res) => {
       );
       res.sendStatus(500);
     });
-  });
+});
 
 //Delete Route
 router.delete('/clear', function (req, res) {
