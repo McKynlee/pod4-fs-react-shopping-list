@@ -93,6 +93,18 @@ function App() {
       });
   }; // end clearList
 
+  const deleteItem = (deleteItemId) => {
+    console.log('deleteItem');
+
+    axios.delete(`/list/delete/${deleteItemId}`)
+      .then((response) => {
+        console.log('Delete successful');
+        fetchList();
+      })
+      .catch((error) => {
+        console.log('error deleting item');
+      })
+  }
   const resetList = () => {
     console.log('in reset');
 
@@ -125,6 +137,7 @@ function App() {
           shoppingList={shoppingList}
           purchasedItem={purchasedItem}
           clearList={clearList}
+          deleteItem={deleteItem}
           resetList={resetList}
         />
       </main>

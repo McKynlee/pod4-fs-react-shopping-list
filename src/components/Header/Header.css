@@ -1,5 +1,8 @@
 .banner-header {
-  background-color: silver;
+  background-color: #383e56;
   text-align: center;
   padding: 0.25em;
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: #c5d7bd;
 }
