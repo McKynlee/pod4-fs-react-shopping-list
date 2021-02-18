@@ -1,10 +1,10 @@
 function ItemForm({
   newItemName,
-  newItemQty,
-  newItemUnit,
+  newQuantity,
+  newUnit,
   setNewItemName,
-  setNewItemQty,
-  setNewItemUnit,
+  setNewQuantity,
+  setNewUnit,
   handleSubmit,
 }) {
   return (
@@ -23,16 +23,16 @@ function ItemForm({
           Quantity:
           <input
             type="number"
-            value={newItemQty}
-            onChange={(evt) => setNewItemQty(evt.target.value)}
+            value={newQuantity}
+            onChange={(evt) => setNewQuantity(evt.target.value)}
           ></input>
         </label>
         <label>
           Unit:
           <input
             type="text"
-            value={newItemUnit}
-            onChange={(evt) => setNewItemUnit(evt.target.value)}
+            value={newUnit}
+            onChange={(evt) => setNewUnit(evt.target.value)}
           ></input>
         </label>
         <button type="submit">Save</button>

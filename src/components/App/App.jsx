@@ -14,9 +14,9 @@ import './App.css';
 function App() {
   const [shoppingList, setShoppingList] = useState([]);
 
-  const [newItemName, setNewItemName] = useState('');
-  const [newItemQty, setNewItemQty] = useState('');
-  const [newItemUnit, setNewItemUnit] = useState('');
+  let [newItemName, setNewItemName] = useState('');
+  let [newQuantity, setNewQuantity] = useState('');
+  let [newUnit, setNewUnit] = useState('');
 
   // auto-render db table info on DOM:
   useEffect(() => {
@@ -39,8 +39,7 @@ function App() {
     event.preventDefault();
     console.log('in submit');
     console.log('name', newItemName);
-    console.log('qty', newItemQty);
-    console.log('unit', newItemUnit);
+    console.log('qty', newQuantity);
   }
 
   return (
@@ -48,11 +47,11 @@ function App() {
       <Header />
       <ItemForm
         newItemName={newItemName}
-        newItemQty={newItemQty}
-        newItemUnit={newItemUnit}
+        newQuantity={newQuantity}
+        newUnit={newUnit}
         setNewItemName={setNewItemName}
-        setNewItemQty={setNewItemQty}
-        setNewItemUnit={setNewItemUnit}
+        setNewQuantity={setNewQuantity}
+        setNewUnit={setNewUnit}
         handleSubmit={handleSubmit}
       />
       <main>
