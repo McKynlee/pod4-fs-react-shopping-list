@@ -8,6 +8,7 @@ import axios from 'axios';
 
 // import components:
 import Header from '../Header/Header.jsx'
+  import ShoppingList from '../ShoppingList/ShoppingList';
 import './App.css';
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        <p>Under Construction...</p>
+        <ShoppingList />
       </main>
     </div>
   );
