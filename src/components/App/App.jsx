@@ -12,6 +12,8 @@ import './App.css';
 
 function App() {
 
+  const [shoppingList, setShoppingList] = useState([]);
+
   // auto-render db table info on DOM:
   useEffect(() => {
     fetchList();
@@ -21,6 +23,7 @@ function App() {
     axios.get('/list')
       .then(response => {
         console.log('get response:', response.data);
+        setShoppingList(response.data);
       })
       .catch(error => {
         console.log('GET error:', error);
