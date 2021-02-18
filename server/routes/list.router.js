@@ -33,7 +33,7 @@ router.put('/:id', (req, res) => {
   const isPurchasedID = req.params.id;
   console.log('isPurchasedID:', isPurchasedID);
 
-  const isPurchased = req.body.inProgress;
+  const isPurchased = req.body.isPurchased;
   console.log('isPurchased:', isPurchased);
 
   let sqlScript = '';
