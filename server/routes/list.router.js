@@ -35,5 +35,20 @@ router.get('/', (req, res) => {
       res.sendStatus(500);
     });
 }); // end GET
+// Delete Route
+route.delete('/reset', function (req, res) {
+  let sqlText = `DELETE FROM "shopping_list" WHERE "isPurchased" = "TRUE"`;
+
+  pool
+    .query(sqlText)
+    .then((dbRes) => {
+      console.log('reset worked');
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('error on reset', error);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
