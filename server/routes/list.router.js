@@ -56,7 +56,10 @@ router.put('/:id', (req, res) => {
       res.sendStatus(200);
     })
     .catch((error) => {
-      console.log(`*** ERROR making database PUT query ${sqlScript}`, error);
+      console.log(
+        `*** ERROR making database PUT query ${sqlScript} ***`,
+        error
+      );
       res.sendStatus(500);
     });
 });
