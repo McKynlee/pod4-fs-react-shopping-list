@@ -21,6 +21,7 @@ function App() {
 
   //POST route
   const addItem = () => {
+    event.preventDefault();
     axios
       .post('/list', {
         name: newItemName,
@@ -52,13 +53,6 @@ function App() {
       });
   }; // end fetchList
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log('in submit');
-    console.log('name', newItemName);
-    console.log('qty', newQuantity);
-  }
-
   return (
     <div className="App">
       <Header />
@@ -72,7 +66,7 @@ function App() {
           setNewItemName={setNewItemName}
           setNewQuantity={setNewQuantity}
           setNewUnit={setNewUnit}
-          handleSubmit={handleSubmit}
+          handleSubmit={addItem}
         />
 
         <ShoppingList />
