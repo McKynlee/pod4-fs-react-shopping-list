@@ -53,6 +53,28 @@ function App() {
       });
   }; // end fetchList
 
+  // handle "Buy" button click
+  // update db to show TRUE in the "isPurchased" column
+  const purchasedItem = (isPurchasedID) => {
+    console.log('*** in purchasedItem() ***');
+    console.log('isPurchasedID:', isPurchasedID);
+
+    axios({
+      method: 'PUT',
+      url: `/list/buy/${isPurchasedID}`,
+      data: {
+        isPurchased: 'TRUE',
+      },
+    })
+      .then((response) => {
+        console.log('PUT response:', response);
+        fetchList();
+      })
+      .catch((error) => {
+        console.log('PUT error:', error);
+      });
+  }; // end purchasedItem
+
   const clearList = () => {
     console.log('inClear');
 
@@ -81,7 +103,11 @@ function App() {
           setNewUnit={setNewUnit}
           handleSubmit={addItem}
         />
-        <ShoppingList shoppingList={shoppingList} clearList={clearList} />
+        <ShoppingList
+          shoppingList={shoppingList}
+          purchasedItem={purchasedItem}
+          clearList={clearList}
+        />
       </main>
     </div>
   );
