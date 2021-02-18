@@ -7,7 +7,7 @@ function ShoppingList() {
       {/* Button Controls */}
       <div className="button-controls">
         <button
-          className="item-button"
+          className="list-button"
           value="resetButton"
           onClick={() => {
             console.log('Reset Button Clicked');
@@ -16,7 +16,7 @@ function ShoppingList() {
           Reset
         </button>
         <button
-          className="item-button"
+          className="list-button"
           value="clearButton"
           onClick={() => {
             console.log('Clear Button Clicked');
@@ -31,8 +31,8 @@ function ShoppingList() {
           <p>Apples</p>
           <p>5 lbs</p>
           <div className="item-buttons">
-            <button>Buy</button>
-            <button>Remove</button>
+            <button className="item-button">Buy</button>
+            <button className="item-button">Remove</button>
           </div>
         </div>
 
@@ -40,8 +40,8 @@ function ShoppingList() {
           <p>Chicken Breast</p>
           <p>20 lbs</p>
           <div className="item-buttons">
-            <button>Buy</button>
-            <button>Remove</button>
+            <button className="item-button">Buy</button>
+            <button className="item-button">Remove</button>
           </div>
         </div>
 
@@ -49,8 +49,8 @@ function ShoppingList() {
           <p>Orange Juice</p>
           <p>1 gallon</p>
           <div className="item-buttons">
-            <button>Buy</button>
-            <button>Remove</button>
+            <button className="item-button">Buy</button>
+            <button className="item-button">Remove</button>
           </div>
         </div>
       </div>
