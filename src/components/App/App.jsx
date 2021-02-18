@@ -68,7 +68,7 @@ function App() {
     })
       .then((response) => {
         console.log('PUT response:', response);
-        /* placeholder to render DOM with updated DB */
+        fetchList();
       })
       .catch((error) => {
         console.log('PUT error:', error);
