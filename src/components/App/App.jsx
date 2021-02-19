@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 // Import useEffect to auto-render GET on DOM on page load:
 import { useEffect, useState } from 'react';
@@ -27,6 +28,12 @@ function App() {
   // Adds a new shopping list item with name, quantity, and unit when entered on the browser/Dom
   const addItem = (event) => {
     event.preventDefault();
+
+    console.log('newItem:', newItemName);
+    // newItemName[0].toUppercase();
+    for (let i = 1; i < newItemName.length; i++) {
+      newItemName[i].toLowerCase();
+    }
 
     axios
       .post('/list', {
