@@ -28,23 +28,34 @@ function App() {
   // Adds a new shopping list item with name, quantity, and unit when entered on the browser/Dom
   const addItem = (event) => {
     event.preventDefault();
+    //console.log(newItemName.length);
 
-    axios
-      .post('/list', {
-        name: newItemName,
-        quantity: newQuantity,
-        unit: newUnit,
-      })
-      .then((response) => {
-        fetchList();
-        setNewItemName('');
-        setNewQuantity('');
-        setNewUnit('');
-      })
-      .catch((error) => {
-        alert('Error Adding item');
-        console.log('POST error:', error);
+    if (newItemName.length > 80 || newUnit.length > 20) {
+      swal('Maximum character length exceeded', 'Please try again', {
+        icon: 'warning',
       });
+    } else if (newItemName && newQuantity) {
+      axios
+        .post('/list', {
+          name: newItemName,
+          quantity: newQuantity,
+          unit: newUnit,
+        })
+        .then((response) => {
+          fetchList();
+          setNewItemName('');
+          setNewQuantity('');
+          setNewUnit('');
+        })
+        .catch((error) => {
+          alert('Error Adding item');
+          console.log('POST error:', error);
+        });
+    } else {
+      swal('Some information is missing', 'Please try again', {
+        icon: 'warning',
+      });
+    }
   }; // end addItem
 
   // Start fetchList
@@ -108,7 +119,7 @@ function App() {
     console.log('deleteItem');
     swal({
       title: `Are you sure you want to delete ${deletedItemName}?`,
-      icon: 'warning',
+      icon: 'error',
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {

@@ -10,7 +10,7 @@ function ShoppingList({
   purchasedItem,
   deleteItem,
 }) {
-  console.log('shoppingList prop:', shoppingList);
+  //console.log('shoppingList prop:', shoppingList);
 
   return (
     <div className="shopping-list">
