@@ -9,7 +9,7 @@ function ShoppingList({
   purchasedItem,
   deleteItem,
 }) {
-  console.log('shoppingList prop:', shoppingList);
+  //console.log('shoppingList prop:', shoppingList);
 
   return (
     <div className="shopping-list">
@@ -24,7 +24,6 @@ function ShoppingList({
         </button>
       </div>
       <div>
-=======
         {/* create each shopping list item */}
         {shoppingList.map((shoppingItem) => {
           return (

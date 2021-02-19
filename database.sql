@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS "shopping_list";
 -- Create Table
 CREATE TABLE "shopping_list" (
 	"id" SERIAL PRIMARY KEY,
-	"name" VARCHAR(80),
-  "quantity" NUMERIC,
+	"name" VARCHAR(80) NOT NULL,
+  "quantity" NUMERIC NOT NULL,
 	"unit" VARCHAR(20),
   "isPurchased" BOOLEAN DEFAULT FALSE
 );

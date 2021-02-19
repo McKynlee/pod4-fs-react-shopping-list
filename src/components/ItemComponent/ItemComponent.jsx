@@ -26,7 +26,7 @@ function ItemComponent({ shoppingItem, purchasedItem, deleteItem }) {
           </button>
           <button
             className="item-button"
-            onClick={() => deleteItem(shoppingItem.id)}
+            onClick={() => deleteItem(shoppingItem.id, shoppingItem.name)}
           >
             Remove
           </button>
