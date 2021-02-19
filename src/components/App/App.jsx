@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { library } from '@fortawesome/fontawesome-svg-core';
 // Import useEffect to auto-render GET on DOM on page load:
 import { useEffect, useState } from 'react';
 
