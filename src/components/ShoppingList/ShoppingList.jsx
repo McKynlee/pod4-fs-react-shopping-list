@@ -1,5 +1,4 @@
 //Takes in shopping list to add buttons for delete and clear for items on the DOM
-
 import './ShoppingList.css';
 import ItemComponent from '../ItemComponent/ItemComponent';
 
@@ -10,7 +9,7 @@ function ShoppingList({
   purchasedItem,
   deleteItem,
 }) {
-  console.log('shoppingList prop:', shoppingList);
+  //console.log('shoppingList prop:', shoppingList);
 
   return (
     <div className="shopping-list">

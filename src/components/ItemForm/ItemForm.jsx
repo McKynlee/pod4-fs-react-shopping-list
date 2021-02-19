@@ -20,6 +20,7 @@ function ItemForm({
             type="text"
             value={newItemName}
             onChange={(evt) => setNewItemName(evt.target.value)}
+            required
           ></input>
         </label>
         <label>
@@ -28,6 +29,7 @@ function ItemForm({
             type="number"
             value={newQuantity}
             onChange={(evt) => setNewQuantity(evt.target.value)}
+            required
           ></input>
         </label>
         <label>

@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 // Import useEffect to auto-render GET on DOM on page load:
 import { useEffect, useState } from 'react';
@@ -27,24 +28,55 @@ function App() {
   // Adds a new shopping list item with name, quantity, and unit when entered on the browser/Dom
   const addItem = (event) => {
     event.preventDefault();
+    //console.log(newItemName.length);
 
-    axios
-      .post('/list', {
-        name: newItemName,
-        quantity: newQuantity,
-        unit: newUnit,
-      })
-      .then((response) => {
-        fetchList();
-        setNewItemName('');
-        setNewQuantity('');
-        setNewUnit('');
-      })
-      .catch((error) => {
-        alert('Error Adding item');
-        console.log('POST error:', error);
+    if (newItemName.length > 80 || newUnit.length > 20) {
+      swal('Maximum character length exceeded', 'Please try again', {
+        icon: 'warning',
       });
+    } else if (newItemName && newQuantity) {
+      axios
+        .post('/list', {
+          name: newItemCasing(),
+          quantity: newQuantity,
+          unit: newUnit,
+        })
+        .then((response) => {
+          fetchList();
+          setNewItemName('');
+          setNewQuantity('');
+          setNewUnit('');
+        })
+        .catch((error) => {
+          alert('Error Adding item');
+          console.log('POST error:', error);
+        });
+    } else {
+      swal('Some information is missing', 'Please try again', {
+        icon: 'warning',
+      });
+    }
   }; // end addItem
+
+
+  // Control letter casing of item names to be passed to db:
+
+  const newItemCasing = () => {
+    // console.log('newItem in newItemCasing:', newItemName);
+    let otherLetters = '';
+
+    for (let i = 1; i < newItemName.length; i++) {
+      otherLetters += newItemName[i].toLowerCase();
+    }
+
+
+    console.log('otherLetters:', otherLetters);
+
+    const newItemCased = newItemName[0].toUpperCase() + otherLetters;
+
+
+    return newItemCased;
+  }; // end newItemCasing
 
   // Start fetchList
   // Will get all the shopping items from the db
@@ -79,49 +111,77 @@ function App() {
   // clearList will clear all the shopping items from the DOM
   const clearList = () => {
     //console.log('inClear');
-
-    axios
-      .delete('/list/clear')
-      .then((response) => {
-        //console.log('Clear successful');
-        fetchList();
-      })
-      .catch((error) => {
-        alert('Could not clear list.');
-        console.log('Error in clearList', error);
-      });
+    swal({
+      title: 'Are you sure you want to clear?',
+      text: 'This will remove all the items on your list.',
+      icon: 'error',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete('/list/clear')
+          .then((response) => {
+            //console.log('Clear successful');
+            fetchList();
+            swal('The list has been cleared!', { icon: 'success' });
+          })
+          .catch((error) => {
+            alert('Could not clear list.');
+            console.log('Error in clearList', error);
+          });
+      }
+    });
   }; // end clearList
 
   // deleteItem will delete specific item clicked
-  const deleteItem = (deleteItemId) => {
-    //console.log('deleteItem');
-
-    axios
-      .delete(`/list/delete/${deleteItemId}`)
-      .then((response) => {
-        //console.log('Delete successful');
-        fetchList();
-      })
-      .catch((error) => {
-        alert('Could not delete item');
-        console.log('error deleting item', error);
-      });
+  const deleteItem = (deleteItemId, deletedItemName) => {
+    console.log('deleteItem');
+    swal({
+      title: `Are you sure you want to delete ${deletedItemName}?`,
+      icon: 'error',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete(`/list/delete/${deleteItemId}`)
+          .then((response) => {
+            //console.log('Delete successful');
+            fetchList();
+            swal(`${deletedItemName} has been deleted!`, { icon: 'success' });
+          })
+          .catch((error) => {
+            alert('Could not delete item');
+            console.log('error deleting item', error);
+          });
+      }
+    });
   }; // end deleteItem
 
   // On click, removes all purchased items from the db
   const resetList = () => {
     //console.log('in reset');
-
-    axios
-      .delete('/list/reset')
-      .then((response) => {
-        //console.log('reset success!');
-        fetchList();
-      })
-      .catch((error) => {
-        alert('Could not reset list.');
-        console.log('error on reset', error);
-      });
+    swal({
+      title: 'This will remove all purchased items. Are you sure?',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios
+          .delete('/list/reset')
+          .then((response) => {
+            //console.log('reset success!');
+            fetchList();
+            swal('The purchased items have been cleared!', { icon: 'success' });
+          })
+          .catch((error) => {
+            alert('Could not reset list.');
+            console.log('error on reset', error);
+          });
+      }
+    });
   }; // end resetList
 
   return (
