@@ -19,12 +19,14 @@ function ItemComponent({ shoppingItem, purchasedItem, deleteItem }) {
       ) : (
         <div className="item-buttons">
           <button
+            id="buy"
             className="item-button"
             onClick={() => purchasedItem(shoppingItem.id)}
           >
             Buy
           </button>
           <button
+            id="remove"
             className="item-button"
             onClick={() => deleteItem(shoppingItem.id)}
           >
