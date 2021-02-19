@@ -1,31 +1,15 @@
-# React Shopping List
+![MIT LICENSE](https://img.shields.io/github/license/William-Krug/pod4-fs-react-shopping-list.svg?style=flat-square)
+![REPO SIZE](https://img.shields.io/github/repo-size/William-Krug/pod4-fs-react-shopping-list.svg?style=flat-square)
+![TOP_LANGUAGE](https://img.shields.io/github/languages/top/William-Krug/pod4-fs-react-shopping-list.svg?style=flat-square)
+![FORKS](https://img.shields.io/github/forks/William-Krug/pod4-fs-react-shopping-list.svg?style=social)
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
-
-## Description
-
-Your project description goes here. What problem did you solve? How did you solve it?
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
-
-(View Raw will give you the markdown that you can copy to your repos!)
-
-![MIT LICENSE](https://img.shields.io/github/license/scottbromander/the_marketplace.svg?style=flat-square)
-![REPO SIZE](https://img.shields.io/github/repo-size/scottbromander/the_marketplace.svg?style=flat-square)
-![TOP_LANGUAGE](https://img.shields.io/github/languages/top/scottbromander/the_marketplace.svg?style=flat-square)
-![FORKS](https://img.shields.io/github/forks/scottbromander/the_marketplace.svg?style=social)
-
-# PROJECT NAME
+# Cullen Pod 4 Week 10 Group Project: React Shopping List
 
 ## Description
 
-_Duration: 2 Week Sprint_
+_Duration: 2 Day Sprint_
 
 Directly above this is how long it took you to develop the project. Your project description goes here. What problem did you solve? How did you solve it?
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam at massa in faucibus. Etiam volutpat, risus non mollis convallis, velit nisi pulvinar mi, eu faucibus orci nisi eget nibh. Integer a velit pretium, volutpat arcu eleifend, fringilla elit. Cras erat sapien, convallis venenatis tellus vitae, feugiat dictum felis.
-
-Suspendisse euismod volutpat aliquet. Maecenas vulputate mauris in pellentesque facilisis. Phasellus varius malesuada semper. Cras sollicitudin diam mollis maximus aliquam.
 
 To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
 
@@ -38,7 +22,10 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 Link to software that is required to install the app (e.g. node).
 
 - [Node.js](https://nodejs.org/en/)
-- List other prerequisites here
+- [PostgreSQL](https://www.postgresql.org/)
+- [Express](https://expressjs.com/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Postico](https://eggerapps.at/postico/)
 
 ## Installation
 
@@ -55,24 +42,50 @@ If your application has secret keys (for example -- Twilio), make sure you tell 
 
 ## Usage
 
-How does someone use this application? Tell a user story here.
-
-1. xxx
-2. xxx
-3. xxx
-4. xxx
-5. xxx
-6. xxx
+1. Users will enter the Item, Quantity, and Units in the form field at the top of the page and click the **Save** button.
+   (**Note**: Item and Quantity fields are required for adding an item.)
+2. All items in the _Shopping List_ will be displayed below the form in alphabetical order.
+   (Unpurchased items will be displayed first, followed by purchased items which will also be in alphabetical order.)
+3. Clicking **Buy** will mark the item as purchased.
+   (The **Buy** and **Remove** button will disappear, the item will become greyed out, and the list of items will reorder itself.)
+4. Clicking **Remove** will remove the item from the _Shopping List_.
+5. Clicking **Reset** will mark all _purchased_ items as unpurchased.
+6. Clicking **Clear** will remove all items from the _Shopping List_.
 
 ## Built With
 
-List technologies and frameworks here
+- HTML
+- CSS
+- JavaScript
+- React
+- Express
+- Axios
+- Postico
+- PostgreSQL
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-_Note, include this only if you have a license file. GitHub will generate one for you if you want!_
+Copyright (c) [2021] [Fowsia Elmi, Vada Karlen, William Krug, McKynlee Westman]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ## Acknowledgement
 
