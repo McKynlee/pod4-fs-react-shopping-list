@@ -9,17 +9,11 @@
 
 _Duration: 2 Day Sprint_
 
-Directly above this is how long it took you to develop the project. Your project description goes here. What problem did you solve? How did you solve it?
+We created a Shopping List application that allows users to enter in their needed items (name, quantity, and units) and display all items (alphabetically). Users have the option to **Buy** or **Remove** individual items from their list. Similarly, users can **Reset** all purchased items back to an unpurchased state. Users can **Clear** all items from their list at any time.
 
-To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
-
-## Screen Shot
-
-Include one or two screen shots of your project here (optional). Remove if unused.
+The functionality for the app is performed utilizing a database to store all items, Express server to route DOM requests to and from the database and React front end for DOM manipulation.
 
 ### Prerequisites
-
-Link to software that is required to install the app (e.g. node).
 
 - [Node.js](https://nodejs.org/en/)
 - [PostgreSQL](https://www.postgresql.org/)
@@ -29,15 +23,11 @@ Link to software that is required to install the app (e.g. node).
 
 ## Installation
 
-How do you get your application up and running? This is a step by step list for how another developer could get this project up and running. The good target audience in terms of knowledge, would be a fellow Primer from another cohort being able to spin up this project. Note that you do not need a paragraph here to intro Installation. It should be step-by-step.
-
-If your application has secret keys (for example -- Twilio), make sure you tell them how to set that up, both in getting the key and then what to call it in the `.env` file.
-
-1. Create a database named `your database name`,
-2. The queries in the `tables.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries,
-3. Open up your editor of choice and run an `npm install`
-4. Run `npm run server` in your terminal
-5. Run `npm run client` in your terminal
+1. Create a database named `fs-react-shopping`.
+2. The queries in the `database.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries.
+3. Open up your editor of choice and run an `npm install`.
+4. Run `npm run server` in your terminal.
+5. Run `npm run client` in your terminal.
 6. The `npm run client` command will open up a new browser tab for you!
 
 ## Usage
