@@ -29,15 +29,9 @@ function App() {
   const addItem = (event) => {
     event.preventDefault();
 
-    console.log('newItem:', newItemName);
-    // newItemName[0].toUppercase();
-    for (let i = 1; i < newItemName.length; i++) {
-      newItemName[i].toLowerCase();
-    }
-
     axios
       .post('/list', {
-        name: newItemName,
+        name: newItemCasing(),
         quantity: newQuantity,
         unit: newUnit,
       })
@@ -52,6 +46,25 @@ function App() {
         console.log('POST error:', error);
       });
   }; // end addItem
+
+
+  const newItemCasing = () => {
+    console.log('newItem:', newItemName);
+    let otherLetters = '';
+
+    for (let i = 1; i < newItemName.length; i++) {
+      otherLetters += newItemName[i].toLowerCase();
+    };
+
+    console.log('otherLetters:', otherLetters);
+
+    const newItemCased =
+      newItemName[0].toUpperCase() + otherLetters;
+
+    console.log('newItemCased:', newItemCased);
+
+    return newItemCased;
+  } // end newItemCasing
 
   // Start fetchList
   // Will get all the shopping items from the db
