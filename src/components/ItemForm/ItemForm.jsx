@@ -1,3 +1,6 @@
+// Takes user input and passes into App.jsx to create a new
+// shopping list item
+// Returns jsx to be rendered to the DOM
 function ItemForm({
   newItemName,
   newQuantity,
