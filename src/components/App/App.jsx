@@ -58,19 +58,22 @@ function App() {
     }
   }; // end addItem
 
+
+  // Control letter casing of item names to be passed to db:
+
   const newItemCasing = () => {
-    console.log('newItem:', newItemName);
+    // console.log('newItem in newItemCasing:', newItemName);
     let otherLetters = '';
 
     for (let i = 1; i < newItemName.length; i++) {
       otherLetters += newItemName[i].toLowerCase();
     }
 
+
     console.log('otherLetters:', otherLetters);
 
     const newItemCased = newItemName[0].toUpperCase() + otherLetters;
 
-    console.log('newItemCased:', newItemCased);
 
     return newItemCased;
   }; // end newItemCasing
