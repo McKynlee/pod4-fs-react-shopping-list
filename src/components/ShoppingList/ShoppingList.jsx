@@ -24,6 +24,7 @@ function ShoppingList({ shoppingList, clearList, purchasedItem }) {
       </div>
       {/* List Items */}
       <div>
+        ``
         {shoppingList.map((shoppingItem) => {
           {
             /* Pull this out if Item */
