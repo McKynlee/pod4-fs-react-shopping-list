@@ -24,6 +24,7 @@ function ShoppingList({
         </button>
       </div>
       <div>
+=======
         {/* create each shopping list item */}
         {shoppingList.map((shoppingItem) => {
           return (
